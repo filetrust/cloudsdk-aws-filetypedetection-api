@@ -1,0 +1,163 @@
+    openapi: 3.0.0
+    info:
+      title: File Type Detection API
+      description: HTTP endpoint that executes the Glasswall File Type Detection Product.
+      version: 0.1.9
+    servers:
+      - url: https://fglpdf9gf6.execute-api.us-west-2.amazonaws.com/Prod
+        description: us-west-2
+    paths:
+      /api/filetypedetection/base64:
+        post:
+          summary: Requests the input Base64 file has its file type detected.
+          description: Detects the file type of the input Base64 file.
+          parameters:
+            - in: header
+              name: x-api-key
+              schema:
+                type: string
+              required: true
+          requestBody:
+            content:
+              application/json:
+                schema:
+                  type: object
+                  required:
+                    - Base64
+                  properties:
+                    Base64:
+                      type: string
+                encoding:
+                  file:
+                    style: form
+          responses:
+            '200':    # status code
+              description: Success
+              content: 
+                application/json:
+                  schema:
+                    type: object
+                    properties:
+                      FileType:
+                        type: integer
+                        enum: [0, 1, 2, 3, 4, 5, 16, 17, 18, 19, 20, 21, 22, 23, 24, 26, 27, 28, 29]
+                        description: >
+                          File Type:
+                            * `0` - Unknown
+                            * `1` - FileIssues
+                            * `2` - BufferIssues
+                            * `3` - InternalIssues
+                            * `4` - LicenseExpired
+                            * `5` - PasswordProtectedOpcFile
+                            * `16` - Pdf
+                            * `17` - Doc
+                            * `18` - Docx
+                            * `19` - Ppt
+                            * `20` - Pptx
+                            * `21` - Xls
+                            * `22` - Xlsx
+                            * `23` - Png
+                            * `24` - Jpeg
+                            * `25` - Gif
+                            * `26` - Emf
+                            * `27` - Wmf
+                            * `28` - Rtf
+                            * `29` - Bmp
+                      FileTypeName: 
+                        type: string
+                      FileSize:
+                        type: integer
+                  example: '{"FileType":29,"FileTypeName":"Bmp","FileSize":2}'
+            '400':
+              description: Bad Request - This is usually when the JSON input is malformed or missing parameters
+              content:
+                application/json:
+                  schema:
+                    type: object
+                    properties:
+                      Base64:
+                        type: array
+                        description: "Error relating to the input"
+                        items:
+                          type: string
+            '403':
+              description: Forbidden - This typically occurs when the x-api-key is not supplied, or it is incorrect.
+            '415':
+              description: Unsupported Media Type - This happens when the request was not sent in JSON.
+      /api/filetypedetection/sas:
+        post:
+          summary: Requests that the input URL to a file has its file type detected.
+          description: Detects the file type of the input file found at the url and returns it in the form of JSON
+          parameters:
+            - in: header
+              name: x-api-key
+              schema:
+                type: string
+              required: true
+          requestBody:
+            content:
+              "application/json":
+                schema:
+                  type: object
+                  required:
+                    - SasUrl
+                  properties:
+                    SasUrl:
+                      type: string
+                encoding:
+                  file:
+                    style: form
+          responses:
+            '200':    # status code
+              description: Success
+              content: 
+                application/json:
+                  schema:
+                    type: object
+                    properties:
+                      FileType:
+                        type: integer
+                        enum: [0, 1, 2, 3, 4, 5, 16, 17, 18, 19, 20, 21, 22, 23, 24, 26, 27, 28, 29]
+                        description: >
+                          File Type:
+                            * `0` - Unknown
+                            * `1` - FileIssues
+                            * `2` - BufferIssues
+                            * `3` - InternalIssues
+                            * `4` - LicenseExpired
+                            * `5` - PasswordProtectedOpcFile
+                            * `16` - Pdf
+                            * `17` - Doc
+                            * `18` - Docx
+                            * `19` - Ppt
+                            * `20` - Pptx
+                            * `21` - Xls
+                            * `22` - Xlsx
+                            * `23` - Png
+                            * `24` - Jpeg
+                            * `25` - Gif
+                            * `26` - Emf
+                            * `27` - Wmf
+                            * `28` - Rtf
+                            * `29` - Bmp
+                      FileTypeName: 
+                        type: string
+                      FileSize:
+                        type: integer
+                  example: '{"FileType":29,"FileTypeName":"Bmp","FileSize":2}'
+            '400':
+              description: Bad Request - This is usually when the JSON input is malformed or missing parameters
+              content:
+                application/json:
+                  schema:
+                    type: object
+                    properties:
+                      SasUrl:
+                        type: array
+                        description: "Error relating to the input"
+                        items:
+                          type: string
+            '403':
+              description: Forbidden - This typically occurs when the x-api-key is not supplied, or it is incorrect.
+            '415':
+              description: Unsupported Media Type - This happens when the request was not sent in JSON.

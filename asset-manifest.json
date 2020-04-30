@@ -1,0 +1,27 @@
+{
+  "files": {
+    "main.css": "/cloudskd-aws-rebuild-api/static/css/main.7118b248.chunk.css",
+    "main.js": "/cloudskd-aws-rebuild-api/static/js/main.bcfd4188.chunk.js",
+    "main.js.map": "/cloudskd-aws-rebuild-api/static/js/main.bcfd4188.chunk.js.map",
+    "runtime-main.js": "/cloudskd-aws-rebuild-api/static/js/runtime-main.fe518f19.js",
+    "runtime-main.js.map": "/cloudskd-aws-rebuild-api/static/js/runtime-main.fe518f19.js.map",
+    "static/css/2.e4355e26.chunk.css": "/cloudskd-aws-rebuild-api/static/css/2.e4355e26.chunk.css",
+    "static/js/2.56d0f344.chunk.js": "/cloudskd-aws-rebuild-api/static/js/2.56d0f344.chunk.js",
+    "static/js/2.56d0f344.chunk.js.map": "/cloudskd-aws-rebuild-api/static/js/2.56d0f344.chunk.js.map",
+    "index.html": "/cloudskd-aws-rebuild-api/index.html",
+    "precache-manifest.edccb32a560d2f7a1992cfff93d3b73f.js": "/cloudskd-aws-rebuild-api/precache-manifest.edccb32a560d2f7a1992cfff93d3b73f.js",
+    "service-worker.js": "/cloudskd-aws-rebuild-api/service-worker.js",
+    "static/css/2.e4355e26.chunk.css.map": "/cloudskd-aws-rebuild-api/static/css/2.e4355e26.chunk.css.map",
+    "static/css/main.7118b248.chunk.css.map": "/cloudskd-aws-rebuild-api/static/css/main.7118b248.chunk.css.map",
+    "static/media/api.yaml": "/cloudskd-aws-rebuild-api/static/media/api.6ff7a5f2.yaml",
+    "static/media/App.css": "/cloudskd-aws-rebuild-api/static/media/roboto-regular-webfont.d96d07c1.woff2",
+    "static/media/logo.svg": "/cloudskd-aws-rebuild-api/static/media/logo.6c8e5727.svg"
+  },
+  "entrypoints": [
+    "static/js/runtime-main.fe518f19.js",
+    "static/css/2.e4355e26.chunk.css",
+    "static/js/2.56d0f344.chunk.js",
+    "static/css/main.7118b248.chunk.css",
+    "static/js/main.bcfd4188.chunk.js"
+  ]
+}
