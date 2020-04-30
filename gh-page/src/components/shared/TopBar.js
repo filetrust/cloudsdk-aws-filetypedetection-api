@@ -1,8 +1,7 @@
 import React from "react";
-import TopBarNavigation from "./TopBarNavigation";
 import logo from "../../img/logo.svg";
 
-var TopBar = ({ onApiKeyChange, apiKey, usePublicKey, togglePublicKey }) => {
+var TopBar = () => {
     return (
         <div className="app-header">
             {/* <TopBarNavigation />
