@@ -4,10 +4,10 @@ using Glasswall.Core.Engine.Common.PolicyConfig;
 
 namespace Glasswall.CloudSdk.Common.Web.Models
 {
-    public class SasRequest
+    public class UrlRequest
     {
         [Required]
-        public Uri SasUrl { get; set; }
+        public Uri InputGetUrl { get; set; }
 
         public ContentManagementFlags ContentManagementFlags { get; set; }
     }
