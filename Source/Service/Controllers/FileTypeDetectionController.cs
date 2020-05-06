@@ -1,22 +1,26 @@
 using System;
-using System.Diagnostics;
+using Glasswall.CloudSdk.Common;
 using Glasswall.CloudSdk.Common.Web.Abstraction;
 using Glasswall.CloudSdk.Common.Web.Models;
 using Glasswall.Core.Engine.Common.FileProcessing;
+using Glasswall.Core.Engine.Messaging;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Logging;
-using Newtonsoft.Json;
 
 namespace Glasswall.CloudSdk.AWS.FileTypeDetection.Controllers
 {
     public class FileTypeDetectionController : CloudSdkController<FileTypeDetectionController>
     {
+        private readonly IGlasswallVersionService _glasswallVersionService;
         private readonly IFileTypeDetector _fileTypeDetector;
 
         public FileTypeDetectionController(
+            IGlasswallVersionService glasswallVersionService,
             IFileTypeDetector fileTypeDetector,
-            ILogger<FileTypeDetectionController> logger) : base(logger)
+            IMetricService metricService,
+            ILogger<FileTypeDetectionController> logger) : base(logger, metricService)
         {
+            _glasswallVersionService = glasswallVersionService ?? throw new ArgumentNullException(nameof(glasswallVersionService));
             _fileTypeDetector = fileTypeDetector ?? throw new ArgumentNullException(nameof(fileTypeDetector));
         }
 
@@ -25,14 +29,19 @@ namespace Glasswall.CloudSdk.AWS.FileTypeDetection.Controllers
         {
             try
             {
+                Logger.LogInformation("'{0}' method invoked", nameof(DetermineFileTypeFromBase64));
+
                 if (!ModelState.IsValid)
                     return BadRequest(ModelState);
 
-                Logger.LogInformation("{0} method invoked", nameof(DetermineFileTypeFromBase64));
+                if (!TryGetBase64File(request.Base64, out var file))
+                    return BadRequest("Input file could not be decoded from base64.");
 
-                return TryGetBase64File(request.Base64, out var bytes) 
-                    ? DetermineFromBytes(request.FileName, bytes)
-                    : new BadRequestObjectResult("Could not parse base 64 file.");
+                RecordEngineVersion();
+
+                var fileType = DetectFromBytes(file);
+
+                return Ok(fileType);
             }
             catch (Exception e)
             {
@@ -41,21 +50,24 @@ namespace Glasswall.CloudSdk.AWS.FileTypeDetection.Controllers
             }
         }
 
-        [HttpPost("sas")]
-        public IActionResult DetermineFileTypeFromSas([FromBody] SasRequest request)
+        [HttpPost("url")]
+        public IActionResult DetermineFileTypeFromUrl([FromBody] UrlRequest request)
         {
             try
             {
+                Logger.LogInformation("{0} method invoked", nameof(DetermineFileTypeFromUrl));
+
                 if (!ModelState.IsValid)
                     return BadRequest(ModelState);
 
-                Logger.LogInformation("{0} method invoked", nameof(DetermineFileTypeFromSas));
+                if (!TryGetFile(request.InputGetUrl, out var file))
+                    return BadRequest("Input file could not be downloaded.");
 
-                var fileName = GetFileNameFromUrl(request.SasUrl.AbsolutePath);
+                RecordEngineVersion();
 
-                return TryGetFile(request.SasUrl, out var bytes)
-                    ? DetermineFromBytes(fileName, bytes)
-                    : new BadRequestObjectResult($"Could not download file from SAS: {request.SasUrl}.");
+                var fileType = DetectFromBytes(file);
+
+                return Ok(fileType);
             }
             catch (Exception e)
             {
@@ -64,15 +76,20 @@ namespace Glasswall.CloudSdk.AWS.FileTypeDetection.Controllers
             }
         }
 
-        private IActionResult DetermineFromBytes(string fileName, byte[] bytes)
+        private void RecordEngineVersion()
         {
-            var stopwatch = new Stopwatch();
-            stopwatch.Start();
-            var fileType = _fileTypeDetector.DetermineFileType(bytes);
-            stopwatch.Stop();
+            var version = _glasswallVersionService.GetVersion();
+            MetricService.Record(Metric.Version, version);
+        }
 
-            Logger.Log(LogLevel.Information, $"File '{fileName}' DetermineFileType call took {stopwatch.Elapsed:c}");
-            return new OkObjectResult(JsonConvert.SerializeObject(fileType));
+        private FileTypeDetectionResponse DetectFromBytes(byte[] bytes)
+        {
+            TimeMetricTracker.Restart();
+            var fileTypeResponse = _fileTypeDetector.DetermineFileType(bytes);
+            TimeMetricTracker.Stop();
+
+            MetricService.Record(Metric.DetectFileTypeTime, TimeMetricTracker.Elapsed);
+            return fileTypeResponse;
         }
     }
 }
