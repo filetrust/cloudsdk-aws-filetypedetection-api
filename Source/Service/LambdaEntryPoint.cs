@@ -1,3 +1,4 @@
+using System.Diagnostics.CodeAnalysis;
 using Microsoft.AspNetCore.Hosting;
 
 namespace Glasswall.CloudSdk.AWS.FileTypeDetection
@@ -8,6 +9,7 @@ namespace Glasswall.CloudSdk.AWS.FileTypeDetection
     /// 
     /// FileTypeDetection::FileTypeDetection.LambdaEntryPoint::FunctionHandlerAsync
     /// </summary>
+    [ExcludeFromCodeCoverage]
     public class LambdaEntryPoint :
 
         // The base class must be set to match the AWS service invoking the Lambda function. If not Amazon.Lambda.AspNetCoreServer
