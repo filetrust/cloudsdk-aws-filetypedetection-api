@@ -50,7 +50,7 @@ jobs:
         
   merge-to-master:
     runs-on: ubuntu-latest
-    needs: [end-to-end-test]
+    needs: [deploy-to-qa]
     steps:
       - name: Checkout 🛎️
         uses: actions/checkout@master
