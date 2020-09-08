@@ -1,9 +1,9 @@
-# Glasswall File Type Analyse
+# Glasswall File Type Rebuild
 
-Simple single page application written in react, which allows users to have a file analysed with the Glasswall d-First Engine.
+Simple single page application written in react, which allows users to have a file rebuilt with the Glasswall d-First Engine.
 
 ## Try it out
-You can view a live demo hosted on this repo [here](https://filetrust.github.io/cloudsdk-aws-analyse-api/#/)
+You can view a live demo hosted on this repo [here](https://filetrust.github.io/cloudsdk-aws-rebuild-api/#/)
 
 ## Related Blog posts
 
@@ -25,4 +25,4 @@ Deployment is handled using github actions, commits to master will trigger a dep
 
 ## FAQ
 
-https://github.com/filetrust/product-saas-analyse/blob/master/faq.md
+https://github.com/filetrust/product-saas-rebuild/blob/master/faq.md
