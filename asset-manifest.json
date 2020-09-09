@@ -1,27 +1,28 @@
 {
   "files": {
-    "main.css": "/cloudsdk-aws-filetypedetection-api/static/css/main.d2c0fe7d.chunk.css",
-    "main.js": "/cloudsdk-aws-filetypedetection-api/static/js/main.bcfd4188.chunk.js",
-    "main.js.map": "/cloudsdk-aws-filetypedetection-api/static/js/main.bcfd4188.chunk.js.map",
-    "runtime-main.js": "/cloudsdk-aws-filetypedetection-api/static/js/runtime-main.278d78be.js",
-    "runtime-main.js.map": "/cloudsdk-aws-filetypedetection-api/static/js/runtime-main.278d78be.js.map",
-    "static/css/2.e4355e26.chunk.css": "/cloudsdk-aws-filetypedetection-api/static/css/2.e4355e26.chunk.css",
-    "static/js/2.56d0f344.chunk.js": "/cloudsdk-aws-filetypedetection-api/static/js/2.56d0f344.chunk.js",
-    "static/js/2.56d0f344.chunk.js.map": "/cloudsdk-aws-filetypedetection-api/static/js/2.56d0f344.chunk.js.map",
+    "main.css": "/cloudsdk-aws-filetypedetection-api/static/css/main.49650d09.chunk.css",
+    "main.js": "/cloudsdk-aws-filetypedetection-api/static/js/main.ec0eaccc.chunk.js",
+    "main.js.map": "/cloudsdk-aws-filetypedetection-api/static/js/main.ec0eaccc.chunk.js.map",
+    "runtime-main.js": "/cloudsdk-aws-filetypedetection-api/static/js/runtime-main.f61d361b.js",
+    "runtime-main.js.map": "/cloudsdk-aws-filetypedetection-api/static/js/runtime-main.f61d361b.js.map",
+    "static/css/2.ecb7c289.chunk.css": "/cloudsdk-aws-filetypedetection-api/static/css/2.ecb7c289.chunk.css",
+    "static/js/2.34be157e.chunk.js": "/cloudsdk-aws-filetypedetection-api/static/js/2.34be157e.chunk.js",
+    "static/js/2.34be157e.chunk.js.map": "/cloudsdk-aws-filetypedetection-api/static/js/2.34be157e.chunk.js.map",
     "index.html": "/cloudsdk-aws-filetypedetection-api/index.html",
-    "precache-manifest.2de3de693e3ebfeb5404bdb5960eee32.js": "/cloudsdk-aws-filetypedetection-api/precache-manifest.2de3de693e3ebfeb5404bdb5960eee32.js",
+    "precache-manifest.0d31948834610a82e644bc15ab63f13c.js": "/cloudsdk-aws-filetypedetection-api/precache-manifest.0d31948834610a82e644bc15ab63f13c.js",
     "service-worker.js": "/cloudsdk-aws-filetypedetection-api/service-worker.js",
-    "static/css/2.e4355e26.chunk.css.map": "/cloudsdk-aws-filetypedetection-api/static/css/2.e4355e26.chunk.css.map",
-    "static/css/main.d2c0fe7d.chunk.css.map": "/cloudsdk-aws-filetypedetection-api/static/css/main.d2c0fe7d.chunk.css.map",
+    "static/css/2.ecb7c289.chunk.css.map": "/cloudsdk-aws-filetypedetection-api/static/css/2.ecb7c289.chunk.css.map",
+    "static/css/main.49650d09.chunk.css.map": "/cloudsdk-aws-filetypedetection-api/static/css/main.49650d09.chunk.css.map",
+    "static/js/2.34be157e.chunk.js.LICENSE.txt": "/cloudsdk-aws-filetypedetection-api/static/js/2.34be157e.chunk.js.LICENSE.txt",
     "static/media/api.yaml": "/cloudsdk-aws-filetypedetection-api/static/media/api.6ff7a5f2.yaml",
     "static/media/App.css": "/cloudsdk-aws-filetypedetection-api/static/media/roboto-regular-webfont.d96d07c1.woff2",
     "static/media/logo.svg": "/cloudsdk-aws-filetypedetection-api/static/media/logo.6c8e5727.svg"
   },
   "entrypoints": [
-    "static/js/runtime-main.278d78be.js",
-    "static/css/2.e4355e26.chunk.css",
-    "static/js/2.56d0f344.chunk.js",
-    "static/css/main.d2c0fe7d.chunk.css",
-    "static/js/main.bcfd4188.chunk.js"
+    "static/js/runtime-main.f61d361b.js",
+    "static/css/2.ecb7c289.chunk.css",
+    "static/js/2.34be157e.chunk.js",
+    "static/css/main.49650d09.chunk.css",
+    "static/js/main.ec0eaccc.chunk.js"
   ]
 }
